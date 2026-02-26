@@ -67,6 +67,12 @@ Optional arguments:
 
 --actor → filter by IAM user performing the action
 
+### Correlated Privilege Escalation Detection
+
+Python detection engine output showing correlated PrivEscChain alert.
+
+![PrivEsc Detection Output](docs/screenshots/privesc_detection_output.png)
+
 ## 🧠 Detection Engineering Concepts Demonstrated
 
 Cloud-native telemetry ingestion

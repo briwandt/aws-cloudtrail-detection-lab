@@ -105,6 +105,88 @@ Unit tests for detection logic
 
 Detection-as-Code rule framework
 
+## 🔎 Technical Appendix
+
+Detection Engine Design
+
+The detection engine is intentionally structured as modular “detection-as-code” components:
+
+detector.py
+
+CLI entrypoint
+
+Queries CloudWatch Logs via filter_log_events
+
+Applies atomic and correlated detection logic
+
+Outputs structured JSON findings
+
+detections/atomic.py
+
+Event classification
+
+Severity scoring
+
+Privilege escalation detection (AdministratorAccess attachment)
+
+detections/correlation.py
+
+Time-window based correlation (default: 15 minutes)
+
+Groups events by requestParameters.userName
+
+Detects multi-stage privilege escalation chains
+
+## Event Normalization Strategy
+
+Events are:
+
+Parsed from CloudWatch message JSON
+
+Filtered to high-signal IAM management events
+
+Enriched with:
+
+actor
+
+target_user
+
+event_time
+
+severity
+
+reason
+
+This mimics a lightweight SIEM pipeline.
+
+## Testing Strategy
+
+Unit tests validate:
+
+Atomic detection correctness
+
+Privilege escalation classification
+
+Correlation logic for PrivEscChain
+
+Tests are executed via:
+
+python -m pytest -q
+
+This ensures detection logic behaves deterministically independent of AWS runtime.
+
+## Known Limitations
+
+Relies on CloudTrail delivery latency
+
+No deduplication or state store
+
+No allowlisting of break-glass roles
+
+No enrichment (IP geo, ASN, etc.)
+
+These are intentional simplifications for lab scope.
+
 👩‍💻 Author
 
 Detection Engineering Lab by Brianna Morgan

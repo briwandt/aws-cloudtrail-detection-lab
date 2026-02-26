@@ -1,5 +1,3 @@
-# aws-cloudtrail-detection-lab
-
 ## AWS CloudTrail Detection Lab
 
 Cloud-Native Detection Engineering | Atomic + Correlated IAM Detections

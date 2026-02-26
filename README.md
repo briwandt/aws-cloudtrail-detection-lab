@@ -89,6 +89,14 @@ False positive reduction (actor filtering)
 
 Structured alert output (JSON)
 
+## 📸 Detection Evidence
+
+### CloudTrail Telemetry in CloudWatch Logs
+
+CloudWatch Logs Insights showing IAM privilege escalation activity.
+
+![CloudWatch Logs Insights](docs/screenshots/cloudwatch_logs_insights.png)
+
 ## 🔒 Security Notes
 
 All testing performed in a dedicated lab AWS account
